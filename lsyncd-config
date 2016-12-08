@@ -1,0 +1,17 @@
+settings {
+   nodaemon   = false,
+   maxDelays  = 10,
+   statusInterval = 20
+}
+
+sync {
+    default.rsync,
+    source    = "./",
+    target    = "root@192.168.1.23:/root/react-westworld",
+    delete = false,
+    rsync     = {
+        archive  = true,
+        compress = true,
+        exclude = node_modules
+    }
+}
