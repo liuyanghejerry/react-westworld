@@ -8,6 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../color-scheme';
 import propertyCircleFactory from './factory';
+import gridFactory from './grid';
 
 function small() {
   const CIRCLE_RADIUS = 200;
@@ -42,6 +43,8 @@ function large() {
 const InnerCircle = propertyCircleFactory(small());
 const OutterCircle = propertyCircleFactory(large());
 
+const Grid = gridFactory(large());
+
 const InnerCircleWrapper = styled.div`
   margin-top: ${(large().CIRCLE_RADIUS - small().CIRCLE_RADIUS) / 2}px;
   margin-left: ${(large().CIRCLE_RADIUS - small().CIRCLE_RADIUS) / 2}px;
@@ -59,6 +62,7 @@ const DoublePropertyCircleLayout = styled.div`
 function DoublePropertyCircle({properties}) {
   return (
     <DoublePropertyCircleLayout>
+      {/* <Grid count={properties.length / 2}/> */}
       <InnerCircleWrapper>
         <InnerCircle properties={properties.slice(0, properties.length / 2)} />
       </InnerCircleWrapper>

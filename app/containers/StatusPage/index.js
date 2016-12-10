@@ -19,12 +19,12 @@ const Layout = styled.div`
   display: flex;
   align-items: flex-end;
   align-content: space-around;
+  & > * {
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
 `;
 
-const FakeRadar = styled.div`
-  width: 500px;
-  height: 500px;
-`;
 const FakeGroupContent = styled.div`
   width: 100px;
   height: 300px;
