@@ -5,9 +5,19 @@
  */
 
 import { fromJS } from 'immutable';
+import {random, shuffle} from 'lodash';
+import {Personality} from '../../corpus';
 import {
   DEFAULT_ACTION,
 } from './constants';
+
+const personalities = shuffle(Personality).slice(0, 58).map((personality) => {
+  return {
+    label: personality,
+    percentage: random(0, 100),
+    checked: false
+  }
+});
 
 const initialState = fromJS({
   bulkApperception: {
@@ -39,7 +49,8 @@ const initialState = fromJS({
     min: 0,
     max: 20,
     current: 12
-  }
+  },
+  personalities: personalities
 });
 
 function statusPageReducer(state = initialState, action) {

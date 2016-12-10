@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import messages from './messages';
 
 import {LargeProgressBar, SmallProgressBar} from  '../../components/HorizontalProgressBar';
+import PropertyCircle from  '../../components/PropertyCircle';
 
 const Layout = styled.div`
   display: flex;
@@ -44,7 +45,7 @@ export class StatusPage extends React.PureComponent { // eslint-disable-line rea
   render() {
     return (
       <Layout>
-        <FakeRadar></FakeRadar>
+        <PropertyCircle properties={this.props.personalities}></PropertyCircle>
         <FakeGroupContent></FakeGroupContent>
 
         <LargeProgressBar

@@ -48,6 +48,8 @@ const InnerCircleWrapper = styled.div`
 `;
 
 const DoublePropertyCircleLayout = styled.div`
+  width: ${large().CONTAINER_RADIUS}px;
+  height: ${large().CONTAINER_RADIUS}px;
   position: relative;
   & > * {
     position: absolute;
