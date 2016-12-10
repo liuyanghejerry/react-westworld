@@ -7,7 +7,7 @@ import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
-import largeProgressBarReducer from 'containers/LargeProgressBar/reducer';
+import progressBarPageReducer from 'containers/ProgressBarPage/reducer';
 
 /*
  * routeReducer
@@ -45,6 +45,6 @@ export default function createReducer(asyncReducers) {
     route: routeReducer,
     language: languageProviderReducer,
     ...asyncReducers,
-    largeProgressBar: largeProgressBarReducer,
+    progressBarPage: progressBarPageReducer,
   });
 }

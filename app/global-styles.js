@@ -22,6 +22,7 @@ injectGlobal`
 
   #app {
     background-color: ${colors.mainBackgroundColor};
+    color: ${colors.mainTextColor};
     min-height: 100%;
     min-width: 100%;
   }

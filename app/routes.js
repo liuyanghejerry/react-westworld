@@ -39,7 +39,7 @@ export default function createRoutes(store) {
       name: 'progressbar',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/LargeProgressBar'),
+          System.import('containers/ProgressBarPage'),
         ]);
 
         const renderRoute = loadModule(cb);
@@ -52,6 +52,24 @@ export default function createRoutes(store) {
       },
     },
     {
+      path: '/status',
+      name: 'statusPage',
+      getComponent(nextState, cb) {
+        const importModules = Promise.all([
+          System.import('containers/StatusPage/reducer'),
+          System.import('containers/StatusPage'),
+        ]);
+
+        const renderRoute = loadModule(cb);
+
+        importModules.then(([reducer, component]) => {
+          injectReducer('statusPage', reducer.default);
+          renderRoute(component);
+        });
+
+        importModules.catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
