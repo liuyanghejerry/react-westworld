@@ -58,31 +58,28 @@ const RadiusBar = styled.div`
 
 const LABEL_FONT_SIZE = 20;
 
-function CircleLabel({label, radius, rotateOffset}) {
+function CircleLabel({label, radius}) {
   const totalCount = [...label].length;
+  const amendRadius = radius - LABEL_FONT_SIZE / 2;
   const charUnits = [...label].reverse().map((char, index) => {
     const Unit = styled.div`
       position: absolute;
       top: 0;
       left: 0;
-      width: ${radius}px;
-      height: 1em;
-      transform: rotate(${index * 6 + 10}deg) translateX(-${radius + LABEL_FONT_SIZE / 2}px);
-      transform-origin: top left;
-    `;
-    const Chart = styled.div`
       width: 1em;
       height: 1em;
-      transform: rotate(${90}deg);
-      transform-origin: center;
+      transform: rotate(${(index + 2) * 6}deg);
+      transform-origin: 0 -${amendRadius}px;
     `;
-    return <Unit key={index}><Chart>{char}</Chart></Unit>;
+    return <Unit key={index}>{char}</Unit>;
   });
   const CircleLabelLayout = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-4px) rotate(-90deg);
+    width: ${radius}px;
+    height: ${radius}px;
+    transform: translateY(${amendRadius}px);
     text-transform: uppercase;
     text-align: center;
     font-size: ${LABEL_FONT_SIZE}px;
