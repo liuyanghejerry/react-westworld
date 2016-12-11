@@ -11,7 +11,7 @@ import {
   DEFAULT_ACTION,
 } from './constants';
 
-const personalities = shuffle(Personality).slice(0, 58).map((personality) => {
+const personalities = shuffle(Personality).slice(0, 94).map((personality) => {
   return {
     label: personality,
     percentage: random(0, 100),
@@ -50,7 +50,12 @@ const initialState = fromJS({
     max: 20,
     current: 12
   },
-  personalities: personalities
+  personalities: personalities,
+  selectedItem: {
+    outerLabel: 'amnt:[0]%',
+    innerLabel: 'prblty:[0]%',
+    title: 'Title',
+  }
 });
 
 function statusPageReducer(state = initialState, action) {

@@ -11,7 +11,7 @@ import PropertyCircle from '../../components/PropertyCircle';
 
 import {Personality} from '../../corpus';
 
-const properties = shuffle(Personality).slice(0, 48).map((personality) => {
+const properties = shuffle(Personality).slice(0, 94).map((personality) => {
   return {
     label: personality,
     percentage: random(0, 100),
@@ -19,12 +19,20 @@ const properties = shuffle(Personality).slice(0, 48).map((personality) => {
   }
 });
 
+const selectedItem = {
+  outerLabel: 'amnt:[0]%',
+  innerLabel: 'prblty:[0]%',
+  title: 'Title',
+};
 
 export class PropertyCirclePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <PropertyCircle properties={properties}></PropertyCircle>
+        <PropertyCircle
+          selectedItem={selectedItem}
+          properties={properties}>
+        </PropertyCircle>
       </div>
     );
   }

@@ -8,6 +8,8 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../color-scheme';
 
+import CentralWidget from './CentralWidget';
+
 function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BUBBLE_RADIUS, INNEST_CIRCLE_BORDER_WIDTH, CONTAINER_RADIUS}) {
   const Bubble = styled.div`
     width: ${BUBBLE_RADIUS}px;
@@ -44,7 +46,7 @@ function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BUBBLE_RADI
     left: 0;
     transform: translate(${MINI_PROGRESS_LENGTH + BUBBLE_RADIUS}px, ${MINI_PROGRESS_LENGTH + BUBBLE_RADIUS - INNEST_CIRCLE_BORDER_WIDTH /2}px);
     transform-origin: center;
-    border: ${INNEST_CIRCLE_BORDER_WIDTH}px solid ${colors.mainTextColor};
+    border: ${INNEST_CIRCLE_BORDER_WIDTH}px solid ${colors.mainTextColorLight};
     border-radius: 100%;
   `;
 

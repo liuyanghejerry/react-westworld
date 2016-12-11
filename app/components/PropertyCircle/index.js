@@ -8,10 +8,10 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../color-scheme';
 import propertyCircleFactory from './factory';
-import gridFactory from './grid';
+import CentralWidget from './CentralWidget';
 
 function small() {
-  const CIRCLE_RADIUS = 200;
+  const CIRCLE_RADIUS = 400;
   const MINI_PROGRESS_LENGTH = 100;
   const BUBBLE_RADIUS = 10;
   const INNEST_CIRCLE_BORDER_WIDTH = 4;
@@ -26,7 +26,7 @@ function small() {
 }
 
 function large() {
-  const CIRCLE_RADIUS = 500;
+  const CIRCLE_RADIUS = 700;
   const MINI_PROGRESS_LENGTH = 100;
   const BUBBLE_RADIUS = 10;
   const INNEST_CIRCLE_BORDER_WIDTH = 4;
@@ -43,8 +43,6 @@ function large() {
 const InnerCircle = propertyCircleFactory(small());
 const OutterCircle = propertyCircleFactory(large());
 
-const Grid = gridFactory(large());
-
 const InnerCircleWrapper = styled.div`
   margin-top: ${(large().CIRCLE_RADIUS - small().CIRCLE_RADIUS) / 2}px;
   margin-left: ${(large().CIRCLE_RADIUS - small().CIRCLE_RADIUS) / 2}px;
@@ -59,14 +57,20 @@ const DoublePropertyCircleLayout = styled.div`
   }
 `;
 
-function DoublePropertyCircle({properties}) {
+function DoublePropertyCircle({properties, selectedItem}) {
   return (
     <DoublePropertyCircleLayout>
-      {/* <Grid count={properties.length / 2}/> */}
       <InnerCircleWrapper>
         <InnerCircle properties={properties.slice(0, properties.length / 2)} />
       </InnerCircleWrapper>
       <OutterCircle properties={properties.slice(properties.length / 2, properties.length)} />
+      <CentralWidget
+      containerRadius={large().CONTAINER_RADIUS}
+      constrainRadius={small().CIRCLE_RADIUS}
+      innerLabel={selectedItem.innerLabel}
+      outerLabel={selectedItem.outerLabel}
+      title={selectedItem.title}>
+      </CentralWidget>
     </DoublePropertyCircleLayout>
   );
 }

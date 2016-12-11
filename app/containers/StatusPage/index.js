@@ -45,7 +45,10 @@ export class StatusPage extends React.PureComponent { // eslint-disable-line rea
   render() {
     return (
       <Layout>
-        <PropertyCircle properties={this.props.personalities}></PropertyCircle>
+        <PropertyCircle
+          properties={this.props.personalities}
+          selectedItem={this.props.selectedItem}>
+        </PropertyCircle>
         <FakeGroupContent></FakeGroupContent>
 
         <LargeProgressBar
