@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import {fill} from 'lodash';
 import colors from '../../color-scheme';
 
-function gridFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BUBBLE_RADIUS, INNEST_CIRCLE_BORDER_WIDTH, CONTAINER_RADIUS}) {
+function gridFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADIUS, INNEST_CIRCLE_BORDER_WIDTH, CONTAINER_RADIUS}) {
 
   const GridLayout = styled.div`
     width: ${CONTAINER_RADIUS}px;

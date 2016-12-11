@@ -54,7 +54,7 @@ const initialState = fromJS({
   selectedItem: {
     outerLabel: 'amnt:[0]%',
     innerLabel: 'prblty:[0]%',
-    title: 'Title',
+    title: 'Bulk Apperception',
   }
 });
 

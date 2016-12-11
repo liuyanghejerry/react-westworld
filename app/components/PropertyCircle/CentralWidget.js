@@ -8,6 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {concat} from 'lodash';
 import colors from '../../color-scheme';
+import Bullet from './Bullet';
 
 const Layout = styled.div`
   position: relative;
@@ -57,16 +58,6 @@ const RadiusBar = styled.div`
 
 const LABEL_FONT_SIZE = 20;
 
-const CircleLabelLayout = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-4px) rotate(-90deg);
-  text-transform: uppercase;
-  text-align: center;
-  font-size: ${LABEL_FONT_SIZE}px;
-`;
-
 function CircleLabel({label, radius, rotateOffset}) {
   const totalCount = [...label].length;
   const charUnits = [...label].reverse().map((char, index) => {
@@ -87,10 +78,74 @@ function CircleLabel({label, radius, rotateOffset}) {
     `;
     return <Unit key={index}><Chart>{char}</Chart></Unit>;
   });
+  const CircleLabelLayout = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-4px) rotate(-90deg);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: ${LABEL_FONT_SIZE}px;
+  `;
   return (
     <CircleLabelLayout>
       {charUnits}
     </CircleLabelLayout>
+  );
+}
+
+function Title({title}) {
+  const BULLET_RADIUS = 10;
+  const StyledContainer = styled.div`
+    min-width: ${MIDDLE_CIRCLE_RADIUS + 18}px;
+    min-height: 40px;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(${-1 * 18}px);
+    padding: 10px;
+    line-height: ${BULLET_RADIUS}px;
+    border: 4px solid ${colors.mainTextColor};
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.6);
+  `;
+  return (
+    <StyledContainer>
+      <Bullet radius={BULLET_RADIUS} />
+      {title}
+    </StyledContainer>
+  );
+}
+
+function ControlButtons() {
+  // TODO: use real icon
+  const Layout = styled.div`
+    width: ${OUTER_CIRCLE_RADIUS / 2}px;
+    height: ${OUTER_CIRCLE_RADIUS / 2}px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-${OUTER_CIRCLE_RADIUS / 2 - 20}px);
+    & > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 20px;
+      height: 20px;
+    }
+  `;
+
+  const Icon = styled.div`
+    transform: rotate(${({index}) => index * 30 - 30}deg);
+    transform-origin: 0 ${OUTER_CIRCLE_RADIUS / 2 - 20}px;
+  `;
+  return (
+    <Layout>
+      <Icon index={0} key={0}>A</Icon>
+      <Icon index={1} key={1}>B</Icon>
+      <Icon index={2} key={2}>C</Icon>
+    </Layout>
   );
 }
 
@@ -104,6 +159,8 @@ function CentralWidget({containerRadius, constrainRadius, innerLabel, outerLabel
       <RadiusBar constrainRadius={constrainRadius}/>
       <CircleLabel label={innerLabel} radius={MIDDLE_CIRCLE_RADIUS / 2 + LABEL_FONT_SIZE}/>
       <CircleLabel label={outerLabel} radius={OUTER_CIRCLE_RADIUS / 2 + LABEL_FONT_SIZE}/>
+      <Title title={title} />
+      <ControlButtons />
     </Layout>
   );
 }

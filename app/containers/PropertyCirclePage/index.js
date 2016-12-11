@@ -22,7 +22,7 @@ const properties = shuffle(Personality).slice(0, 94).map((personality) => {
 const selectedItem = {
   outerLabel: 'amnt:[0]%',
   innerLabel: 'prblty:[0]%',
-  title: 'Title',
+  title: 'Bulk Apperception',
 };
 
 export class PropertyCirclePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
