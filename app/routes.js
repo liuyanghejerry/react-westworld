@@ -78,6 +78,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/profile',
+      name: 'profilePage',
+      getComponent(location, cb) {
+        System.import('containers/ProfilePage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
