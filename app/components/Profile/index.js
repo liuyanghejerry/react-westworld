@@ -10,6 +10,7 @@ import colors from '../../color-scheme';
 
 const INFO_BOX_WIDTH = 400;
 const INFO_BOX_HEIGHT = 140;
+const TRIANGO_TOP_OVERFLOW = 8;
 
 function AvatorBox({hostId}) {
   const OuterBox = styled.div`
@@ -71,10 +72,65 @@ function AvatorBox({hostId}) {
     );
   }
 
+  const Avator = styled.img`
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    position: relative;
+    opacity: 0.4;
+  `;
+
+  const TrippleTriango = styled.div`
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    margin-top: -${TRIANGO_TOP_OVERFLOW}px;
+    border: 30px solid ${colors.mainTextColor};
+    border-top-width: 35px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom: none;
+    position: relative;
+
+    &:before {
+      display: block;
+      content: '';
+      width: 0;
+      height: 0;
+      border: 24px solid ${colors.mainBackgroundColor};
+      border-top-width: 30px;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom: none;
+      position: absolute;
+      top: -33px;
+      left: -24px;
+      z-index: 1;
+    }
+    &:after {
+      display: block;
+      content: '';
+      width: 0;
+      height: 0;
+      border: 17px solid ${colors.textNumberGreen};
+      border-top-width: 21px;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-bottom: none;
+      position: absolute;
+      top: -30px;
+      left: -17px;
+      z-index: 1;
+    }
+  `;
+
   return (
     <OuterBox>
-      <InnerBox />
+      <InnerBox>
+        <Avator src={require('./avatar.svg')} />
+      </InnerBox>
       <CircleIdLabel label={hostId} />
+      <TrippleTriango />
     </OuterBox>
   );
 }
@@ -83,6 +139,7 @@ function InfoBox({hostId}) {
   const Layout = styled.div`
     width: ${INFO_BOX_WIDTH}px;
     min-height: ${INFO_BOX_HEIGHT}px;
+    margin-top: ${TRIANGO_TOP_OVERFLOW}px;
     position: relative;
     border: 4px solid ${colors.mainTextColor};
     border-radius: 10px;

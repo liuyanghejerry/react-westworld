@@ -13,7 +13,7 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
   render() {
     return (
       <div>
-        <Profile hostId={'Host id:AC27381236'} />
+        <Profile hostId={'Host id:AC273812'} />
       </div>
     );
   }

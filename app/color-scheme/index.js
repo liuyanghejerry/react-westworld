@@ -3,4 +3,5 @@ export default {
   mainTextColor: 'rgb(0, 157, 180)',
   mainTextColorLight: 'rgba(0, 157, 180, 0.2)',
   mainMiniProgressBarColor: 'rgb(17, 134, 86)',
+  textNumberGreen: 'rgb(0, 165, 29)',
 };
