@@ -6,7 +6,13 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import {merge} from 'lodash';
 import colors from '../../color-scheme';
+import TextMetric from './TextMetric';
+import ColumnChartMetric from './ColumnChartMetric';
+import HeatMetric from './HeatMetric';
+import ProgressMetric from './ProgressMetric';
+import Tag from './Tag';
 
 const INFO_BOX_WIDTH = 400;
 const INFO_BOX_HEIGHT = 140;
@@ -16,7 +22,9 @@ function AvatorBox({hostId}) {
   const OuterBox = styled.div`
     width: ${INFO_BOX_HEIGHT}px;
     height: ${INFO_BOX_HEIGHT}px;
-    position: absolute;
+    float: left;
+    shape-outside: circle();
+    position: relative;
     top: -4px;
     left: -4px;
     border: 4px solid ${colors.mainTextColorLight};
@@ -135,7 +143,46 @@ function AvatorBox({hostId}) {
   );
 }
 
-function InfoBox({hostId}) {
+function DetailBox({metrics}) {
+  const metricTypeMap = {
+    'text': TextMetric,
+    'column': ColumnChartMetric,
+    'heat': HeatMetric,
+    'progress': ProgressMetric,
+  };
+
+  const Layout = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 12px;
+    line-height: 12px;
+    text-transform: uppercase;
+  `;
+
+  return (
+    <Layout>
+      {metrics.map((metric, index) => {
+        const props = merge(metric, {key: index});
+        const Metric = metricTypeMap[metric.metricType];
+        return <Metric {...props}/>;
+      })}
+    </Layout>
+  );
+}
+
+function TagBox({tags}) {
+  // TODO
+  return <div>
+    {
+      tags.map((tag, index) => {
+        return <Tag key={index} content={tag}/>;
+      })
+    }
+  </div>;
+}
+
+function InfoBox({hostId, metrics, tags}) {
   const Layout = styled.div`
     width: ${INFO_BOX_WIDTH}px;
     min-height: ${INFO_BOX_HEIGHT}px;
@@ -149,14 +196,19 @@ function InfoBox({hostId}) {
   return (
     <Layout>
       <AvatorBox hostId={hostId} />
+      <DetailBox metrics={metrics}/>
+      <TagBox tags={tags}/>
     </Layout>
   );
 }
 
-function Profile({hostId}) {
+function Profile({hostId, metrics, tags}) {
   return (
     <div>
-      <InfoBox hostId={hostId}/>
+      <InfoBox
+        hostId={hostId}
+        tags={tags}
+        metrics={metrics}/>
     </div>
   );
 }
