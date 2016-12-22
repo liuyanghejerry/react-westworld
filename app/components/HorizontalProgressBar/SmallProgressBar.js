@@ -75,7 +75,6 @@ const SmallLabel = styled.div`
   width: 2ch;
   line-height: ${ITEM_SIZE}px;
   margin-left: 8px;
-  font-family: monospace;
   text-align: center;
   color: ${colors.mainTextColor};
   transform: rotate(-90deg);

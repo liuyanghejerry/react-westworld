@@ -75,7 +75,6 @@ const LargeLabel = styled.div`
   width: 2ch;
   line-height: ${ITEM_SIZE}px;
   margin-left: ${COMMON_MARGIN}px;
-  font-family: monospace;
   text-align: center;
   color: ${colors.mainTextColor};
 `;

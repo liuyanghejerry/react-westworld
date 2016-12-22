@@ -13,8 +13,10 @@ import ColumnChartMetric from './ColumnChartMetric';
 import HeatMetric from './HeatMetric';
 import ProgressMetric from './ProgressMetric';
 import Tag from './Tag';
+import LiveStatus from './LiveStatus';
+import Label from './Label';
 
-const INFO_BOX_WIDTH = 400;
+const INFO_BOX_WIDTH = 500;
 const INFO_BOX_HEIGHT = 140;
 const TRIANGO_TOP_OVERFLOW = 8;
 
@@ -172,17 +174,55 @@ function DetailBox({metrics}) {
 }
 
 function TagBox({tags}) {
-  // TODO
-  return <div>
-    {
-      tags.map((tag, index) => {
-        return <Tag key={index} content={tag}/>;
-      })
-    }
-  </div>;
+  const Layout = styled.div`
+    margin-top: 8px;
+  `;
+  const InnerLayout = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10px;
+  `;
+  return (
+    <Layout>
+      <InnerLayout>
+        {
+          tags.map((tag, index) => {
+            return <Tag key={index} content={tag}/>;
+          })
+        }
+      </InnerLayout>
+    </Layout>
+  );
 }
 
-function InfoBox({hostId, metrics, tags}) {
+function LiveStatusBox({liveStatusInfo}) {
+  const Layout = styled.div`
+    display: flex;
+    line-height: 1;
+    font-size: 12px;
+    line-height: 12px;
+  `;
+  const BlockLabel = styled(Label)`
+    display: block;
+  `;
+  return (
+    <Layout>
+      <div>
+        <BlockLabel>{liveStatusInfo.title}</BlockLabel>
+        {liveStatusInfo.liveStatuses.map((liveStatus) => {
+          return <LiveStatus
+            key={liveStatus.title}
+            title={liveStatus.title}
+            maxX={liveStatus.maxX}
+            maxY={liveStatus.maxY}
+            data={liveStatus.data} />;
+        })}
+      </div>
+    </Layout>
+  );
+}
+
+function Profile({hostId, metrics, tags, liveStatusInfo}) {
   const Layout = styled.div`
     width: ${INFO_BOX_WIDTH}px;
     min-height: ${INFO_BOX_HEIGHT}px;
@@ -198,18 +238,8 @@ function InfoBox({hostId, metrics, tags}) {
       <AvatorBox hostId={hostId} />
       <DetailBox metrics={metrics}/>
       <TagBox tags={tags}/>
+      <LiveStatusBox liveStatusInfo={liveStatusInfo}/>
     </Layout>
-  );
-}
-
-function Profile({hostId, metrics, tags}) {
-  return (
-    <div>
-      <InfoBox
-        hostId={hostId}
-        tags={tags}
-        metrics={metrics}/>
-    </div>
   );
 }
 

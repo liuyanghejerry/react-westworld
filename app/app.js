@@ -19,6 +19,7 @@ import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
+import FontFaceObserver from 'fontfaceobserver';
 import LanguageProvider from 'containers/LanguageProvider';
 import configureStore from './store';
 
@@ -27,6 +28,16 @@ import { translationMessages } from './i18n';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
+import  'style-loader!css-loader!./fonts/source-code-pro/source-code-pro.css';
+
+const sourceCodeProObserver = new FontFaceObserver('Source Code Pro', {});
+
+// When Source Code Pro is loaded, add a font-family using Open Sans to the body
+sourceCodeProObserver.load().then(() => {
+  document.body.classList.add('fontLoaded');
+}, () => {
+  document.body.classList.remove('fontLoaded');
+});
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router

@@ -17,7 +17,7 @@ injectGlobal`
   }
 
   body.fontLoaded {
-    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Source Code Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
   #app {
@@ -27,8 +27,7 @@ injectGlobal`
     min-width: 100%;
   }
 
-  p,
-  label {
+  p {
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
   }

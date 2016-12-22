@@ -25,6 +25,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
       <h1>
         <StyledLink to={`/progressbar`} >ProgressBar</StyledLink>
         <StyledLink to={`/propertycircle`} >PropertyCircle</StyledLink>
+        <StyledLink to={`/profile`} >Profile</StyledLink>
         <StyledLink to={`/status`} >Composited Status</StyledLink>
       </h1>
     );
