@@ -15,7 +15,7 @@ function SmallLineChart({data, maxX, maxY}) {
       <svg
         width={CHART_WIDTH}
         height={CHART_HEIGHT}
-        preserveAspectRatio="xMidYMid meet"
+        preserveAspectRatio="xMinYMid meet"
         viewBox={`0 0 ${maxX} ${maxY}`}>
         <polyline
           fill="none"
