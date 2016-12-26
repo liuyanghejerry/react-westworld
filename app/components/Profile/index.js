@@ -6,7 +6,9 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import {merge} from 'lodash';
+import {merge, uniq} from 'lodash';
+// TODO: import Gradient from 'gradient'; is broken
+import Gradient from 'gradient/lib/gradient';
 import colors from '../../color-scheme';
 import TextMetric from './TextMetric';
 import ColumnChartMetric from './ColumnChartMetric';
@@ -15,6 +17,7 @@ import ProgressMetric from './ProgressMetric';
 import Tag from './Tag';
 import LiveStatus from './LiveStatus';
 import Label from './Label';
+import LiveNumber from './LiveNumber';
 
 const INFO_BOX_WIDTH = 500;
 const INFO_BOX_HEIGHT = 140;
@@ -29,6 +32,7 @@ function AvatorBox({hostId}) {
     position: relative;
     top: -4px;
     left: -4px;
+    margin-right: -4px;
     border: 4px solid ${colors.mainTextColorLight};
     border-radius: 100%;
   `;
@@ -56,6 +60,7 @@ function AvatorBox({hostId}) {
       left: 50%;
       transform: translateY(${textRadius / 2}px);
       text-transform: uppercase;
+      color: ${colors.mainTextColorWhite};
     `;
 
     const totalCount = [...label].length;
@@ -157,9 +162,11 @@ function DetailBox({metrics}) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-left: 4px;
     font-size: 12px;
     line-height: 12px;
     text-transform: uppercase;
+    color: ${colors.mainTextColorWhite};
   `;
 
   return (
@@ -175,7 +182,8 @@ function DetailBox({metrics}) {
 
 function TagBox({tags}) {
   const Layout = styled.div`
-    margin-top: 8px;
+    margin-top: 4px;
+    color: ${colors.mainTextColorWhite};
   `;
   const InnerLayout = styled.div`
     display: flex;
@@ -198,12 +206,15 @@ function TagBox({tags}) {
 function LiveStatusBox({liveStatusInfo}) {
   const Layout = styled.div`
     display: flex;
+    padding: 4px 0 4px 4px;
     line-height: 1;
     font-size: 12px;
     line-height: 12px;
+    border-top: 2px solid ${colors.mainTextColorLight};
   `;
   const BlockLabel = styled(Label)`
     display: block;
+    color: ${colors.mainTextColorWhite};
   `;
   return (
     <Layout>
@@ -222,13 +233,29 @@ function LiveStatusBox({liveStatusInfo}) {
   );
 }
 
-function Profile({hostId, metrics, tags, liveStatusInfo}) {
+function LiveNumbersBox({liveNumbers}) {
+  const Layout = styled.div`
+    display: flex;
+    flex-direction: row;
+    border-top: 2px solid ${colors.mainTextColorLight};
+  `;
+  const colorStops = uniq(Gradient(colors.textNumberGreen, colors.mainTextColor, colors.mainTextColorWhite, liveNumbers.length + 1).toArray('hexString'));
+  return (
+    <Layout>
+      {liveNumbers.map((liveNumber, index) => {
+        return <LiveNumber key={index} {...liveNumber}  color={colorStops[index]} />;
+      })}
+    </Layout>
+  );
+}
+
+function Profile({hostId, metrics, tags, liveStatusInfo, liveNumbers}) {
   const Layout = styled.div`
     width: ${INFO_BOX_WIDTH}px;
     min-height: ${INFO_BOX_HEIGHT}px;
     margin-top: ${TRIANGO_TOP_OVERFLOW}px;
     position: relative;
-    border: 4px solid ${colors.mainTextColor};
+    border: 4px solid ${colors.mainTextColorWhite};
     border-radius: 10px;
     border-top-left-radius: ${INFO_BOX_HEIGHT}px;
     border-bottom-left-radius: ${INFO_BOX_HEIGHT}px;
@@ -239,6 +266,7 @@ function Profile({hostId, metrics, tags, liveStatusInfo}) {
       <DetailBox metrics={metrics}/>
       <TagBox tags={tags}/>
       <LiveStatusBox liveStatusInfo={liveStatusInfo}/>
+      <LiveNumbersBox liveNumbers={liveNumbers} />
     </Layout>
   );
 }

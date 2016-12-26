@@ -74,6 +74,21 @@ const liveStatusInfo = {
   ]
 };
 
+const liveNumbers = [
+  {
+    title: 'HR',
+    value: 110
+  },
+  {
+    title: 'Sp02',
+    value: 92
+  },
+  {
+    title: 'RR',
+    value: 40
+  },
+];
+
 export class ProfilePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
@@ -82,7 +97,8 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
           hostId={'Host id:AC273812'}
           tags={tags}
           metrics={metrics}
-          liveStatusInfo={liveStatusInfo} />
+          liveStatusInfo={liveStatusInfo}
+          liveNumbers={liveNumbers} />
       </div>
     );
   }

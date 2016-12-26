@@ -9,7 +9,7 @@ function LiveStatus({title, data, maxX, maxY}) {
     display: inline-block;
   `;
   const ColoredLabel = styled(Label)`
-    color: ${colors.textNumberGreen};
+    color: ${colors.mainTextColorWhite};
   `;
   return (
     <span>
