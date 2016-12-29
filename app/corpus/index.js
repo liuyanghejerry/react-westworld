@@ -227,8 +227,8 @@ const Personality = [
   'virtuous',
   'warm-hearted',
   'well-educated',
-]
+];
 
 export {
   Personality,
-}
+};

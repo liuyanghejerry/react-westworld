@@ -8,7 +8,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {merge, uniq} from 'lodash';
 // TODO: import Gradient from 'gradient'; is broken
-import Gradient from 'gradient/lib/gradient';
+import gradient from 'gradient/lib/gradient';
 import colors from '../../color-scheme';
 import TextMetric from './TextMetric';
 import ColumnChartMetric from './ColumnChartMetric';
@@ -22,6 +22,7 @@ import LiveNumber from './LiveNumber';
 const INFO_BOX_WIDTH = 500;
 const INFO_BOX_HEIGHT = 140;
 const TRIANGO_TOP_OVERFLOW = 8;
+const AVATAR_SVG = require('./avatar.svg');
 
 function AvatorBox({hostId}) {
   const OuterBox = styled.div`
@@ -63,7 +64,6 @@ function AvatorBox({hostId}) {
       color: ${colors.mainTextColorWhite};
     `;
 
-    const totalCount = [...label].length;
     const charUnits = [...label].map((char, index) => {
       const Unit = styled.div`
         position: absolute;
@@ -142,7 +142,7 @@ function AvatorBox({hostId}) {
   return (
     <OuterBox>
       <InnerBox>
-        <Avator src={require('./avatar.svg')} />
+        <Avator src={AVATAR_SVG} />
       </InnerBox>
       <CircleIdLabel label={hostId} />
       <TrippleTriango />
@@ -152,10 +152,10 @@ function AvatorBox({hostId}) {
 
 function DetailBox({metrics}) {
   const metricTypeMap = {
-    'text': TextMetric,
-    'column': ColumnChartMetric,
-    'heat': HeatMetric,
-    'progress': ProgressMetric,
+    text: TextMetric,
+    column: ColumnChartMetric,
+    heat: HeatMetric,
+    progress: ProgressMetric,
   };
 
   const Layout = styled.div`
@@ -194,9 +194,7 @@ function TagBox({tags}) {
     <Layout>
       <InnerLayout>
         {
-          tags.map((tag, index) => {
-            return <Tag key={index} content={tag}/>;
-          })
+          tags.map((tag, index) => (<Tag key={index} content={tag} />))
         }
       </InnerLayout>
     </Layout>
@@ -220,14 +218,14 @@ function LiveStatusBox({liveStatusInfo}) {
     <Layout>
       <div>
         <BlockLabel>{liveStatusInfo.title}</BlockLabel>
-        {liveStatusInfo.liveStatuses.map((liveStatus) => {
-          return <LiveStatus
+        {liveStatusInfo.liveStatuses.map((liveStatus) => (
+          <LiveStatus
             key={liveStatus.title}
             title={liveStatus.title}
             maxX={liveStatus.maxX}
             maxY={liveStatus.maxY}
-            data={liveStatus.data} />;
-        })}
+            data={liveStatus.data} />
+        ))}
       </div>
     </Layout>
   );
@@ -239,12 +237,12 @@ function LiveNumbersBox({liveNumbers}) {
     flex-direction: row;
     border-top: 2px solid ${colors.mainTextColorLight};
   `;
-  const colorStops = uniq(Gradient(colors.textNumberGreen, colors.mainTextColor, colors.mainTextColorWhite, liveNumbers.length + 1).toArray('hexString'));
+  const colorStops = uniq(gradient(colors.textNumberGreen, colors.mainTextColor, colors.mainTextColorWhite, liveNumbers.length + 1).toArray('hexString'));
   return (
     <Layout>
-      {liveNumbers.map((liveNumber, index) => {
-        return <LiveNumber key={index} {...liveNumber}  color={colorStops[index]} />;
-      })}
+      {liveNumbers.map((liveNumber, index) => (
+        <LiveNumber key={index} {...liveNumber}  color={colorStops[index]} />
+      ))}
     </Layout>
   );
 }

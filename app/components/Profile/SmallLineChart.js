@@ -7,9 +7,6 @@ const CHART_HEIGHT = 12;
 const LINE_WIDTH = 10;
 
 function SmallLineChart({data, maxX, maxY}) {
-  const Layout = styled.span`
-    width: ${CHART_WIDTH}px;
-  `;
   return (
     <span>
       <svg

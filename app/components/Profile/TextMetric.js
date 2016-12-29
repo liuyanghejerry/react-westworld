@@ -10,7 +10,12 @@ function TextMetric({title, content}) {
   const Text = styled.span`
     color: ${colors.textNumberGreen};
   `;
-  return <StyledSpan><Label>{title + ':'}</Label><Text>{content}</Text></StyledSpan>;
+  return (
+    <StyledSpan>
+      <Label>{title}:</Label>
+      <Text>{content}</Text>
+    </StyledSpan>
+  );
 }
 
 export default TextMetric;

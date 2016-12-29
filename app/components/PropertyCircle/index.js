@@ -1,12 +1,5 @@
-/**
-*
-* PropertyCircle
-*
-*/
-
 import React from 'react';
 import styled from 'styled-components';
-import colors from '../../color-scheme';
 import propertyCircleFactory from './factory';
 import CentralWidget from './CentralWidget';
 
@@ -66,11 +59,11 @@ function DoublePropertyCircle({properties, selectedItem}) {
       </InnerCircleWrapper>
       <OutterCircle properties={properties.slice(properties.length / 2, properties.length)} />
       <CentralWidget
-      containerRadius={large().CONTAINER_RADIUS}
-      constrainRadius={small().CIRCLE_RADIUS}
-      innerLabel={selectedItem.innerLabel}
-      outerLabel={selectedItem.outerLabel}
-      title={selectedItem.title}>
+        containerRadius={large().CONTAINER_RADIUS}
+        constrainRadius={small().CIRCLE_RADIUS}
+        innerLabel={selectedItem.innerLabel}
+        outerLabel={selectedItem.outerLabel}
+        title={selectedItem.title}>
       </CentralWidget>
     </DoublePropertyCircleLayout>
   );

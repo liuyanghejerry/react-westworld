@@ -1,14 +1,6 @@
-/**
-*
-* PropertyCircle
-*
-*/
-
 import React from 'react';
 import styled from 'styled-components';
 import colors from '../../color-scheme';
-
-import CentralWidget from './CentralWidget';
 import Bullet from './Bullet';
 
 function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADIUS, INNEST_CIRCLE_BORDER_WIDTH, CONTAINER_RADIUS}) {
@@ -38,7 +30,7 @@ function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADI
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(${MINI_PROGRESS_LENGTH + BULLET_RADIUS}px, ${MINI_PROGRESS_LENGTH + BULLET_RADIUS - INNEST_CIRCLE_BORDER_WIDTH /2}px);
+    transform: translate(${MINI_PROGRESS_LENGTH + BULLET_RADIUS}px, ${MINI_PROGRESS_LENGTH + BULLET_RADIUS - INNEST_CIRCLE_BORDER_WIDTH / 2}px);
     transform-origin: center;
     border: ${INNEST_CIRCLE_BORDER_WIDTH}px solid ${colors.mainTextColorLight};
     border-radius: 100%;
@@ -50,7 +42,7 @@ function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADI
     position: relative;
   `;
 
-  function PropertyItem({label, percentage, checked, degree}) {
+  function PropertyItem({label, percentage, /*checked, */degree}) {
     return (
       <PropertyItemLayout degree={degree}>
         <Bullet radius={BULLET_RADIUS}></Bullet>
@@ -66,14 +58,14 @@ function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADI
     return (
       <PropertyCircleLayout>
         <PropertyItems>
-          {properties.map((property, index) => {
-            return <PropertyItem
+          {properties.map((property, index) => (
+            <PropertyItem
               key={index}
               degree={index / properties.length * 360}
               label={property.label}
               percentage={property.percentage}
               checked={property.checked} />
-          })}
+          ))}
         </PropertyItems>
         <Circle />
       </PropertyCircleLayout>

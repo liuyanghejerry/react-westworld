@@ -11,13 +11,13 @@ import PropertyCircle from '../../components/PropertyCircle';
 
 import {Personality} from '../../corpus';
 
-const properties = shuffle(Personality).slice(0, 94).map((personality) => {
-  return {
+const properties = shuffle(Personality).slice(0, 94).map((personality) => (
+  {
     label: personality,
     percentage: random(0, 100),
-    checked: false
+    checked: false,
   }
-});
+));
 
 const selectedItem = {
   outerLabel: 'amnt:[0]%',

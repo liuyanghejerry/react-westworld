@@ -16,9 +16,7 @@ function SmallColumnChart({data}) {
   `;
   return (
     <Layout>
-      {data.map((y, x) => {
-        return <Column key={x} y={y}/>;
-      })}
+      {data.map((y, x) => (<Column key={x} y={y} />))}
     </Layout>
   );
 }

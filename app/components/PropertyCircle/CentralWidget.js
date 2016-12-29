@@ -1,12 +1,5 @@
-/**
-*
-* PropertyCircle
-*
-*/
-
 import React from 'react';
 import styled from 'styled-components';
-import {concat} from 'lodash';
 import colors from '../../color-scheme';
 import Bullet from './Bullet';
 
@@ -117,7 +110,7 @@ function Title({title}) {
 
 function ControlButtons() {
   // TODO: use real icon
-  const Layout = styled.div`
+  const IconLayout = styled.div`
     width: ${OUTER_CIRCLE_RADIUS / 2}px;
     height: ${OUTER_CIRCLE_RADIUS / 2}px;
     position: absolute;
@@ -138,11 +131,11 @@ function ControlButtons() {
     transform-origin: 0 ${OUTER_CIRCLE_RADIUS / 2 - 20}px;
   `;
   return (
-    <Layout>
+    <IconLayout>
       <Icon index={0} key={0}>A</Icon>
       <Icon index={1} key={1}>B</Icon>
       <Icon index={2} key={2}>C</Icon>
-    </Layout>
+    </IconLayout>
   );
 }
 
@@ -150,12 +143,12 @@ function ControlButtons() {
 function CentralWidget({containerRadius, constrainRadius, innerLabel, outerLabel, title}) {
   return (
     <Layout radius={containerRadius}>
-      <InnerCircle circleRadius={INNER_CIRCLE_RADIUS} borderWidth={BORDER_WIDTH}/>
-      <Circle circleRadius={MIDDLE_CIRCLE_RADIUS} borderWidth={BORDER_WIDTH}/>
-      <Circle circleRadius={OUTER_CIRCLE_RADIUS} borderWidth={THICK_BORDER_WIDTH}/>
+      <InnerCircle circleRadius={INNER_CIRCLE_RADIUS} borderWidth={BORDER_WIDTH} />
+      <Circle circleRadius={MIDDLE_CIRCLE_RADIUS} borderWidth={BORDER_WIDTH} />
+      <Circle circleRadius={OUTER_CIRCLE_RADIUS} borderWidth={THICK_BORDER_WIDTH} />
       <RadiusBar constrainRadius={constrainRadius}/>
-      <CircleLabel label={innerLabel} radius={MIDDLE_CIRCLE_RADIUS / 2 + LABEL_FONT_SIZE}/>
-      <CircleLabel label={outerLabel} radius={OUTER_CIRCLE_RADIUS / 2 + LABEL_FONT_SIZE}/>
+      <CircleLabel label={innerLabel} radius={MIDDLE_CIRCLE_RADIUS / 2 + LABEL_FONT_SIZE} />
+      <CircleLabel label={outerLabel} radius={OUTER_CIRCLE_RADIUS / 2 + LABEL_FONT_SIZE} />
       <Title title={title} />
       <ControlButtons />
     </Layout>

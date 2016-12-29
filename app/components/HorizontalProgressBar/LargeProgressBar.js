@@ -40,7 +40,7 @@ const LINE_END_STYLE = `
 `;
 const Line = styled.div`
   height: ${(props) => {
-    return props.length * (ITEM_SIZE + COMMON_MARGIN) - COMMON_MARGIN * 2;
+    return (props.length * (ITEM_SIZE + COMMON_MARGIN)) - (COMMON_MARGIN * 2);
   }}px;
   align-self: flex-start;
   position: absolute;
@@ -62,7 +62,7 @@ const LargeGrid = styled.div`
   width: ${ITEM_SIZE}px;
   height: ${ITEM_SIZE}px;
   border: 1px solid ${colors.mainTextColor};
-  background: ${(props) => props.filled ? colors.mainTextColor : 'transparent'};
+  background: ${(props) => (props.filled ? colors.mainTextColor : 'transparent')};
 `;
 
 const Sign = styled.div`
@@ -99,20 +99,20 @@ function LargeProgressBarItem({filled, label}) {
 function renderSegments(totalCount, current, minValue) {
   var items = lodash.range(totalCount);
   return items.map((item, index) => {
-    return <LargeProgressBarItem
-      key={index}
-      filled={index < current}
-      label={index + minValue}>
-    </LargeProgressBarItem>;
+    return (
+      <LargeProgressBarItem
+        key={index}
+        filled={index < current}
+        label={index + minValue} />
+    );
   }).reverse();
 }
 
 function LargeProgressBar({min, max, current, title}) {
-  const List = styled.ul``;
   return (
     <Layout>
       <Title>{title}</Title>
-      <List>{renderSegments(max - min + 1, current, min)}</List>
+      <ul>{renderSegments(max - min + 1, current, min)}</ul>
       <Line length={max - min + 1}></Line>
     </Layout>
   );

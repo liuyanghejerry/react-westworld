@@ -17,12 +17,12 @@ import {
   selectSmallTitle,
   selectSmallMin,
   selectSmallMax,
-  selectSmallCurrent
+  selectSmallCurrent,
 } from './selectors';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
+// import { FormattedMessage } from 'react-intl';
+// import messages from './messages';
 
-import {LargeProgressBar, SmallProgressBar} from  '../../components/HorizontalProgressBar';
+import {LargeProgressBar, SmallProgressBar} from '../../components/HorizontalProgressBar';
 
 const Layout = styled.div`
   display: flex;
@@ -34,8 +34,8 @@ export class ProgressBarPage extends React.PureComponent { // eslint-disable-lin
   render() {
     return (
       <Layout>
-        <LargeProgressBar min={this.props.largeMin} max={this.props.largeMax} current={this.props.largeCurrent} title={this.props.largeTitle}/>
-        <SmallProgressBar min={this.props.smallMin} max={this.props.smallMax} current={this.props.smallCurrent} title={this.props.smallTitle}/>
+        <LargeProgressBar min={this.props.largeMin} max={this.props.largeMax} current={this.props.largeCurrent} title={this.props.largeTitle} />
+        <SmallProgressBar min={this.props.smallMin} max={this.props.smallMax} current={this.props.smallCurrent} title={this.props.smallTitle} />
       </Layout>
     );
   }
@@ -53,7 +53,7 @@ const mapStateToProps = createStructuredSelector({
   smallCurrent: selectSmallCurrent(),
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(/*dispatch*/) {
   return {};
 }
 

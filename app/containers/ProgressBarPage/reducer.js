@@ -14,14 +14,14 @@ const initialState = fromJS({
     title: 'bulk apperception',
     min: 1,
     max: 20,
-    current: 14
+    current: 14,
   },
   smallProgressBar: {
     title: 'bulk apperception',
     min: 0,
     max: 20,
-    current: 5
-  }
+    current: 5,
+  },
 });
 
 function progressBarPageReducer(state = initialState, action) {

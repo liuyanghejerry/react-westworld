@@ -13,7 +13,7 @@ function LiveStatus({title, data, maxX, maxY}) {
   `;
   return (
     <span>
-      <ColoredLabel>{title + ':'}</ColoredLabel>
+      <ColoredLabel>{title}:</ColoredLabel>
       <SmallLineChart
         data={data}
         maxX={maxX}

@@ -8,7 +8,12 @@ function ColumnChartMetric({title, data}) {
   const StyledSpan = styled.span`
     margin-right: 10px;
   `;
-  return <StyledSpan><Label>{title + ':'}</Label><SmallColumnChart data={data}/></StyledSpan>;
+  return (
+    <StyledSpan>
+      <Label>{title + ':'}</Label>
+      <SmallColumnChart data={data}/>
+    </StyledSpan>
+  );
 }
 
 export default ColumnChartMetric;

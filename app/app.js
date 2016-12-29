@@ -28,7 +28,7 @@ import { translationMessages } from './i18n';
 
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
-import  'style-loader!css-loader!./fonts/source-code-pro/source-code-pro.css';
+import 'style-loader!css-loader!./fonts/source-code-pro/source-code-pro.css';
 
 const sourceCodeProObserver = new FontFaceObserver('Source Code Pro', {});
 

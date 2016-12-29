@@ -36,9 +36,9 @@ function GradientProgressBar({value}) {
     <Layout>
       {new Array(10).fill(null).map((_, index) => {
         if (index >= value) {
-          return <EmptyGrid key={index} />
+          return <EmptyGrid key={index} />;
         }
-        return <Grid key={index} value={index}/>;
+        return <Grid key={index} value={index} />;
       })}
     </Layout>
   );

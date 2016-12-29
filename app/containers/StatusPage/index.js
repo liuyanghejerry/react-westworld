@@ -7,14 +7,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import selectStatusPage from './selectors';
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
-import messages from './messages';
+// import messages from './messages';
 
-import {LargeProgressBar, SmallProgressBar} from  '../../components/HorizontalProgressBar';
-import PropertyCircle from  '../../components/PropertyCircle';
-import Profile from  '../../components/Profile';
+import {LargeProgressBar, SmallProgressBar} from '../../components/HorizontalProgressBar';
+import PropertyCircle from '../../components/PropertyCircle';
+import Profile from '../../components/Profile';
 
 const Layout = styled.div`
   display: flex;
@@ -78,7 +78,7 @@ export class StatusPage extends React.PureComponent { // eslint-disable-line rea
           <SmallProgressBar
             min={this.props.selfPreservation.min} max={this.props.selfPreservation.max} current={this.props.selfPreservation.current} title={this.props.selfPreservation.title}/>
           <SmallProgressBar
-            min={this.props.loyalty.min} max={this.props.loyalty.max} current={this.props.loyalty.current} title={this.props.loyalty.title}/>
+            min={this.props.loyalty.min} max={this.props.loyalty.max} current={this.props.loyalty.current} title={this.props.loyalty.title} />
         </ProgressBarLayout>
       </Layout>
     );

@@ -13,33 +13,33 @@ const metrics = [
   {
     metricType: 'text',
     title: 'CPU 1',
-    content: '123'
+    content: '123',
   },
   {
     metricType: 'column',
     title: 'CPU 2',
-    data: [10, 23, 12, 3, 45, 14, 86]
+    data: [10, 23, 12, 3, 45, 14, 86],
   },
   {
     metricType: 'text',
     title: 'GPU 1',
-    content: '123'
+    content: '123',
   },
   {
     metricType: 'column',
     title: 'GPU 2',
-    data: [10, 23, 12, 3, 45, 14, 86]
+    data: [10, 23, 12, 3, 45, 14, 86],
   },
   {
     metricType: 'heat',
     title: 'Fan 1',
-    value: 7
+    value: 7,
   },
   {
     metricType: 'progress',
     title: 'Upload 1',
-    value: 29
-  }
+    value: 29,
+  },
 ];
 
 const tags = ['fixed', 'old generation', 'alive'];
@@ -70,7 +70,7 @@ const liveStatusInfo = {
       maxX: 20 * 120,
       maxY: 120,
       data: genLiveStatusLineData(120, 20, 120),
-    }
+    },
   ]
 };
 
@@ -79,19 +79,19 @@ const liveNumbers = [
     title: 'HP',
     value: 110,
     min: 80,
-    max: 140
+    max: 140,
   },
   {
     title: 'MP',
     value: 92,
     min: 60,
-    max: 100
+    max: 100,
   },
   {
     title: 'RR',
     value: 40,
     min: 30,
-    max: 60
+    max: 60,
   },
 ];
 

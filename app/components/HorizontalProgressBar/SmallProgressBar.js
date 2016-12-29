@@ -40,7 +40,7 @@ const LINE_END_STYLE = `
 `;
 const Line = styled.div`
   height: ${(props) => {
-    return props.length * (ITEM_SIZE + COMMON_MARGIN) - COMMON_MARGIN * 2;
+    return (props.length * (ITEM_SIZE + COMMON_MARGIN)) - (COMMON_MARGIN * 2);
   }}px;
   align-self: flex-start;
   position: absolute;
@@ -62,7 +62,7 @@ const SmallGrid = styled.div`
   width: 18px;
   height: ${ITEM_SIZE}px;
   border: 1px solid ${colors.mainTextColor};
-  background: ${(props) => props.filled ? colors.mainTextColor : 'transparent'};
+  background: ${(props) => (props.filled ? colors.mainTextColor : 'transparent')};
 `;
 
 const Sign = styled.div`
@@ -98,13 +98,14 @@ function SmallProgressBarItem({filled, label}) {
 }
 
 function renderSegments(totalCount, current, minValue) {
-  var items = lodash.range(totalCount);
+  const items = lodash.range(totalCount);
   return items.map((item, index) => {
     const label = (index + minValue) % 2 ? '·' : index;
-    return <SmallProgressBarItem
-      key={index}
-      filled={index < current} label={label}>
-    </SmallProgressBarItem>;
+    return (
+      <SmallProgressBarItem
+        key={index}
+        filled={index < current} label={label} />
+    );
   }).reverse();
 }
 
