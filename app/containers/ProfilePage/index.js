@@ -76,16 +76,22 @@ const liveStatusInfo = {
 
 const liveNumbers = [
   {
-    title: 'HR',
-    value: 110
+    title: 'HP',
+    value: 110,
+    min: 80,
+    max: 140
   },
   {
-    title: 'Sp02',
-    value: 92
+    title: 'MP',
+    value: 92,
+    min: 60,
+    max: 100
   },
   {
     title: 'RR',
-    value: 40
+    value: 40,
+    min: 30,
+    max: 60
   },
 ];
 
