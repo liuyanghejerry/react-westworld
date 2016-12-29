@@ -252,7 +252,7 @@ function LiveNumbersBox({liveNumbers}) {
 function Profile({hostId, metrics, tags, liveStatusInfo, liveNumbers}) {
   const Layout = styled.div`
     width: ${INFO_BOX_WIDTH}px;
-    min-height: ${INFO_BOX_HEIGHT}px;
+    height: ${INFO_BOX_HEIGHT}px;
     margin-top: ${TRIANGO_TOP_OVERFLOW}px;
     position: relative;
     border: 4px solid ${colors.mainTextColorWhite};

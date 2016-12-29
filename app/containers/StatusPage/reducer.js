@@ -7,6 +7,7 @@
 import { fromJS } from 'immutable';
 import {random, shuffle} from 'lodash';
 import {Personality} from '../../corpus';
+import {genLiveStatusLineData} from '../ProfilePage/utils';
 import {
   DEFAULT_ACTION,
 } from './constants';
@@ -55,6 +56,91 @@ const initialState = fromJS({
     outerLabel: 'amnt:[0]%',
     innerLabel: 'prblty:[0]%',
     title: 'Bulk Apperception',
+  },
+  profile: {
+    hostId: 'Host id:AC273812',
+    tags: ['fixed', 'old generation', 'alive'],
+    metrics: [
+      {
+        metricType: 'text',
+        title: 'CPU 1',
+        content: '123'
+      },
+      {
+        metricType: 'column',
+        title: 'CPU 2',
+        data: [10, 23, 12, 3, 45, 14, 86]
+      },
+      {
+        metricType: 'text',
+        title: 'GPU 1',
+        content: '123'
+      },
+      {
+        metricType: 'column',
+        title: 'GPU 2',
+        data: [10, 23, 12, 3, 45, 14, 86]
+      },
+      {
+        metricType: 'heat',
+        title: 'Fan 1',
+        value: 7
+      },
+      {
+        metricType: 'progress',
+        title: 'Upload 1',
+        value: 29
+      }
+    ],
+    liveStatusInfo: {
+      title: 'live status',
+      liveStatuses: [
+        {
+          title: 'Live 1',
+          maxX: 20 * 120,
+          maxY: 120,
+          data: genLiveStatusLineData(120, 20, 120),
+        },
+        {
+          title: 'Live 2',
+          maxX: 20 * 120,
+          maxY: 120,
+          data: genLiveStatusLineData(120, 20, 120),
+        },
+        {
+          title: 'Live 3',
+          maxX: 20 * 120,
+          maxY: 120,
+          data: genLiveStatusLineData(120, 20, 120),
+        },
+        {
+          title: 'Live 4',
+          maxX: 20 * 120,
+          maxY: 120,
+          data: genLiveStatusLineData(120, 20, 120),
+        }
+      ]
+    },
+    liveNumbers: [
+      {
+        title: 'HP',
+        value: 110,
+        min: 80,
+        max: 140
+      },
+      {
+        title: 'MP',
+        value: 92,
+        min: 60,
+        max: 100
+      },
+      {
+        title: 'RR',
+        value: 40,
+        min: 30,
+        max: 60
+      },
+    ]
   }
 });
 

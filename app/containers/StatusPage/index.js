@@ -14,15 +14,23 @@ import messages from './messages';
 
 import {LargeProgressBar, SmallProgressBar} from  '../../components/HorizontalProgressBar';
 import PropertyCircle from  '../../components/PropertyCircle';
+import Profile from  '../../components/Profile';
 
 const Layout = styled.div`
   display: flex;
   align-items: flex-end;
   align-content: space-around;
+  padding: 4px;
   & > * {
     flex-shrink: 0;
     flex-grow: 0;
   }
+`;
+
+const ProfileLayout = styled.div`
+  position: absolute;
+  top: 0;
+  right: 4px;
 `;
 
 const FakeGroupContent = styled.div`
@@ -45,10 +53,17 @@ export class StatusPage extends React.PureComponent { // eslint-disable-line rea
   render() {
     return (
       <Layout>
+        <ProfileLayout>
+          <Profile
+            hostId={this.props.profile.hostId}
+            tags={this.props.profile.tags}
+            metrics={this.props.profile.metrics}
+            liveStatusInfo={this.props.profile.liveStatusInfo}
+            liveNumbers={this.props.profile.liveNumbers} />
+        </ProfileLayout>
         <PropertyCircle
           properties={this.props.personalities}
-          selectedItem={this.props.selectedItem}>
-        </PropertyCircle>
+          selectedItem={this.props.selectedItem} />
         <FakeGroupContent></FakeGroupContent>
 
         <LargeProgressBar
