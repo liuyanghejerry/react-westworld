@@ -12,7 +12,7 @@ import styled from 'styled-components';
 
 // import messages from './messages';
 
-import {LargeProgressBar, SmallProgressBar} from '../../components/HorizontalProgressBar';
+import { LargeProgressBar, SmallProgressBar } from '../../components/HorizontalProgressBar';
 import PropertyCircle from '../../components/PropertyCircle';
 import Profile from '../../components/Profile';
 
@@ -59,26 +59,33 @@ export class StatusPage extends React.PureComponent { // eslint-disable-line rea
             tags={this.props.profile.tags}
             metrics={this.props.profile.metrics}
             liveStatusInfo={this.props.profile.liveStatusInfo}
-            liveNumbers={this.props.profile.liveNumbers} />
+            liveNumbers={this.props.profile.liveNumbers}
+          />
         </ProfileLayout>
         <PropertyCircle
           properties={this.props.personalities}
-          selectedItem={this.props.selectedItem} />
+          selectedItem={this.props.selectedItem}
+        />
         <FakeGroupContent></FakeGroupContent>
 
         <LargeProgressBar
-          min={this.props.bulkApperception.min} max={this.props.bulkApperception.max} current={this.props.bulkApperception.current} title={this.props.bulkApperception.title}/>
+          min={this.props.bulkApperception.min} max={this.props.bulkApperception.max} current={this.props.bulkApperception.current} title={this.props.bulkApperception.title}
+        />
         <ProgressBarLayout>
           <SmallProgressBar
-            min={this.props.cordination.min} max={this.props.cordination.max} current={this.props.cordination.current} title={this.props.cordination.title}/>
+            min={this.props.cordination.min} max={this.props.cordination.max} current={this.props.cordination.current} title={this.props.cordination.title}
+          />
           <SmallProgressBar
-            min={this.props.aggression.min} max={this.props.aggression.max} current={this.props.aggression.current} title={this.props.aggression.title}/>
+            min={this.props.aggression.min} max={this.props.aggression.max} current={this.props.aggression.current} title={this.props.aggression.title}
+          />
         </ProgressBarLayout>
         <ProgressBarLayout>
           <SmallProgressBar
-            min={this.props.selfPreservation.min} max={this.props.selfPreservation.max} current={this.props.selfPreservation.current} title={this.props.selfPreservation.title}/>
+            min={this.props.selfPreservation.min} max={this.props.selfPreservation.max} current={this.props.selfPreservation.current} title={this.props.selfPreservation.title}
+          />
           <SmallProgressBar
-            min={this.props.loyalty.min} max={this.props.loyalty.max} current={this.props.loyalty.current} title={this.props.loyalty.title} />
+            min={this.props.loyalty.min} max={this.props.loyalty.max} current={this.props.loyalty.current} title={this.props.loyalty.title}
+          />
         </ProgressBarLayout>
       </Layout>
     );

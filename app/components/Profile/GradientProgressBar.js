@@ -13,7 +13,7 @@ function calcColor(value) {
   return `hsla(${(value / 9 * 240).toFixed(2)}, 100%, 50%, 0.5)`;
 }
 
-function GradientProgressBar({value}) {
+function GradientProgressBar({ value }) {
   const Layout = styled.span`
     display: inline-flex;
     flex-direction: row;
@@ -23,7 +23,7 @@ function GradientProgressBar({value}) {
     width: ${GRID_SIZE}px;
     height: ${GRID_SIZE}px;
     margin: 0 1px;
-    background: ${({value}) => calcColor(value)};
+    background: ${({ bgValue }) => calcColor(bgValue)};
   `;
   const EmptyGrid = styled.span`
     width: ${GRID_SIZE}px;
@@ -38,7 +38,7 @@ function GradientProgressBar({value}) {
         if (index >= value) {
           return <EmptyGrid key={index} />;
         }
-        return <Grid key={index} value={index} />;
+        return <Grid key={index} bgValue={index} />;
       })}
     </Layout>
   );

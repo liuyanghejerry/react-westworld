@@ -7,7 +7,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Profile from '../../components/Profile';
-import {genLiveStatusLineData} from './utils';
+import { genLiveStatusLineData } from './utils';
 
 const metrics = [
   {
@@ -71,7 +71,7 @@ const liveStatusInfo = {
       maxY: 120,
       data: genLiveStatusLineData(120, 20, 120),
     },
-  ]
+  ],
 };
 
 const liveNumbers = [
@@ -104,7 +104,8 @@ export class ProfilePage extends React.PureComponent { // eslint-disable-line re
           tags={tags}
           metrics={metrics}
           liveStatusInfo={liveStatusInfo}
-          liveNumbers={liveNumbers} />
+          liveNumbers={liveNumbers}
+        />
       </div>
     );
   }

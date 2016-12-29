@@ -5,27 +5,19 @@ import Bullet from './Bullet';
 
 const Layout = styled.div`
   position: relative;
-  width: ${({radius}) => radius}px;
-  height: ${({radius}) => radius}px;
-`;
-
-const CircleLayout = styled.div`
-  display: flex;
-  line-height: 10px;
-  position: absolute;
-  transform: rotate(${({degree}) => degree}deg) translateX(${({radius}) => radius / 2}px);
-  transform-origin: left;
+  width: ${({ radius }) => radius}px;
+  height: ${({ radius }) => radius}px;
 `;
 
 const Circle = styled.div`
-  width: ${({circleRadius}) => circleRadius}px;
-  height: ${({circleRadius}) => circleRadius}px;
+  width: ${({ circleRadius }) => circleRadius}px;
+  height: ${({ circleRadius }) => circleRadius}px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform-origin: center;
   transform: translate(-50%, -50%);
-  border: ${({borderWidth}) => borderWidth}px solid ${colors.mainTextColorLight};
+  border: ${({ borderWidth }) => borderWidth}px solid ${colors.mainTextColorLight};
   border-radius: 100%;
 `;
 
@@ -41,7 +33,7 @@ const OUTER_CIRCLE_RADIUS = 300;
 
 const RadiusBar = styled.div`
   width: 4px;
-  height: ${({constrainRadius}) => (constrainRadius - INNER_CIRCLE_RADIUS) / 2 - BORDER_WIDTH}px;
+  height: ${({ constrainRadius }) => (constrainRadius - INNER_CIRCLE_RADIUS) / 2 - BORDER_WIDTH}px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -51,8 +43,7 @@ const RadiusBar = styled.div`
 
 const LABEL_FONT_SIZE = 20;
 
-function CircleLabel({label, radius}) {
-  const totalCount = [...label].length;
+function CircleLabel({ label, radius }) {
   const amendRadius = radius - LABEL_FONT_SIZE / 2;
   const charUnits = [...label].reverse().map((char, index) => {
     const Unit = styled.div`
@@ -84,7 +75,7 @@ function CircleLabel({label, radius}) {
   );
 }
 
-function Title({title}) {
+function Title({ title }) {
   const BULLET_RADIUS = 10;
   const StyledContainer = styled.div`
     min-width: ${MIDDLE_CIRCLE_RADIUS + 18}px;
@@ -127,7 +118,7 @@ function ControlButtons() {
   `;
 
   const Icon = styled.div`
-    transform: rotate(${({index}) => index * 30 - 30}deg);
+    transform: rotate(${({ index }) => index * 30 - 30}deg);
     transform-origin: 0 ${OUTER_CIRCLE_RADIUS / 2 - 20}px;
   `;
   return (
@@ -140,13 +131,13 @@ function ControlButtons() {
 }
 
 
-function CentralWidget({containerRadius, constrainRadius, innerLabel, outerLabel, title}) {
+function CentralWidget({ containerRadius, constrainRadius, innerLabel, outerLabel, title }) {
   return (
     <Layout radius={containerRadius}>
       <InnerCircle circleRadius={INNER_CIRCLE_RADIUS} borderWidth={BORDER_WIDTH} />
       <Circle circleRadius={MIDDLE_CIRCLE_RADIUS} borderWidth={BORDER_WIDTH} />
       <Circle circleRadius={OUTER_CIRCLE_RADIUS} borderWidth={THICK_BORDER_WIDTH} />
-      <RadiusBar constrainRadius={constrainRadius}/>
+      <RadiusBar constrainRadius={constrainRadius} />
       <CircleLabel label={innerLabel} radius={MIDDLE_CIRCLE_RADIUS / 2 + LABEL_FONT_SIZE} />
       <CircleLabel label={outerLabel} radius={OUTER_CIRCLE_RADIUS / 2 + LABEL_FONT_SIZE} />
       <Title title={title} />

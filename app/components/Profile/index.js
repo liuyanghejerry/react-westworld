@@ -6,7 +6,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import {merge, uniq} from 'lodash';
+import { merge, uniq } from 'lodash';
 // TODO: import Gradient from 'gradient'; is broken
 import gradient from 'gradient/lib/gradient';
 import colors from '../../color-scheme';
@@ -24,7 +24,7 @@ const INFO_BOX_HEIGHT = 140;
 const TRIANGO_TOP_OVERFLOW = 8;
 const AVATAR_SVG = require('./avatar.svg');
 
-function AvatorBox({hostId}) {
+function AvatorBox({ hostId }) {
   const OuterBox = styled.div`
     width: ${INFO_BOX_HEIGHT}px;
     height: ${INFO_BOX_HEIGHT}px;
@@ -50,7 +50,7 @@ function AvatorBox({hostId}) {
     border-radius: 100%;
   `;
 
-  function CircleIdLabel({label}) {
+  function CircleIdLabel({ label }) {
     const radius = INFO_BOX_HEIGHT - ID_FONT_SIZE * 2;
     const textRadius = radius - ID_FONT_SIZE / 2;
     const Layout = styled.div`
@@ -150,7 +150,7 @@ function AvatorBox({hostId}) {
   );
 }
 
-function DetailBox({metrics}) {
+function DetailBox({ metrics }) {
   const metricTypeMap = {
     text: TextMetric,
     column: ColumnChartMetric,
@@ -172,15 +172,15 @@ function DetailBox({metrics}) {
   return (
     <Layout>
       {metrics.map((metric, index) => {
-        const props = merge(metric, {key: index});
+        const props = merge(metric, { key: index });
         const Metric = metricTypeMap[metric.metricType];
-        return <Metric {...props}/>;
+        return <Metric {...props} />;
       })}
     </Layout>
   );
 }
 
-function TagBox({tags}) {
+function TagBox({ tags }) {
   const Layout = styled.div`
     margin-top: 4px;
     color: ${colors.mainTextColorWhite};
@@ -201,7 +201,7 @@ function TagBox({tags}) {
   );
 }
 
-function LiveStatusBox({liveStatusInfo}) {
+function LiveStatusBox({ liveStatusInfo }) {
   const Layout = styled.div`
     display: flex;
     padding: 4px 0 4px 4px;
@@ -224,14 +224,15 @@ function LiveStatusBox({liveStatusInfo}) {
             title={liveStatus.title}
             maxX={liveStatus.maxX}
             maxY={liveStatus.maxY}
-            data={liveStatus.data} />
+            data={liveStatus.data}
+          />
         ))}
       </div>
     </Layout>
   );
 }
 
-function LiveNumbersBox({liveNumbers}) {
+function LiveNumbersBox({ liveNumbers }) {
   const Layout = styled.div`
     display: flex;
     flex-direction: row;
@@ -241,13 +242,13 @@ function LiveNumbersBox({liveNumbers}) {
   return (
     <Layout>
       {liveNumbers.map((liveNumber, index) => (
-        <LiveNumber key={index} {...liveNumber}  color={colorStops[index]} />
+        <LiveNumber key={index} {...liveNumber} color={colorStops[index]} />
       ))}
     </Layout>
   );
 }
 
-function Profile({hostId, metrics, tags, liveStatusInfo, liveNumbers}) {
+function Profile({ hostId, metrics, tags, liveStatusInfo, liveNumbers }) {
   const Layout = styled.div`
     width: ${INFO_BOX_WIDTH}px;
     height: ${INFO_BOX_HEIGHT}px;
@@ -261,9 +262,9 @@ function Profile({hostId, metrics, tags, liveStatusInfo, liveNumbers}) {
   return (
     <Layout>
       <AvatorBox hostId={hostId} />
-      <DetailBox metrics={metrics}/>
-      <TagBox tags={tags}/>
-      <LiveStatusBox liveStatusInfo={liveStatusInfo}/>
+      <DetailBox metrics={metrics} />
+      <TagBox tags={tags} />
+      <LiveStatusBox liveStatusInfo={liveStatusInfo} />
       <LiveNumbersBox liveNumbers={liveNumbers} />
     </Layout>
   );

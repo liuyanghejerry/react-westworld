@@ -51,7 +51,7 @@ const DoublePropertyCircleLayout = styled.div`
   }
 `;
 
-function DoublePropertyCircle({properties, selectedItem}) {
+function DoublePropertyCircle({ properties, selectedItem }) {
   return (
     <DoublePropertyCircleLayout>
       <InnerCircleWrapper>
@@ -63,7 +63,8 @@ function DoublePropertyCircle({properties, selectedItem}) {
         constrainRadius={small().CIRCLE_RADIUS}
         innerLabel={selectedItem.innerLabel}
         outerLabel={selectedItem.outerLabel}
-        title={selectedItem.title}>
+        title={selectedItem.title}
+      >
       </CentralWidget>
     </DoublePropertyCircleLayout>
   );

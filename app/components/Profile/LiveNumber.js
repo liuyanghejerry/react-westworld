@@ -8,7 +8,7 @@ const Unit = styled.div`
   align-items: center;
   margin: 0 20px;
   text-align: right;
-  color: ${({color}) => color};
+  color: ${({ color }) => color};
   &:first-of-type {
     margin-left: 0;
   }
@@ -19,7 +19,7 @@ const Value = styled.span`
   line-height: 1;
 `;
 
-function CompoundLabel({title, min, max}) {
+function CompoundLabel({ title, min, max }) {
   const Layout = styled.span`
     display: inline-flex;
     flex-direction: column;
@@ -38,7 +38,7 @@ function CompoundLabel({title, min, max}) {
   );
 }
 
-function LiveNumber({title, value, min, max, color}) {
+function LiveNumber({ title, value, min, max, color }) {
   return (
     <Unit color={color}>
       <CompoundLabel title={title} min={min} max={max} />

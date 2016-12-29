@@ -5,9 +5,9 @@
  */
 
 import { fromJS } from 'immutable';
-import {random, shuffle} from 'lodash';
-import {Personality} from '../../corpus';
-import {genLiveStatusLineData} from '../ProfilePage/utils';
+import { random, shuffle } from 'lodash';
+import { Personality } from '../../corpus';
+import { genLiveStatusLineData } from '../ProfilePage/utils';
 import {
   DEFAULT_ACTION,
 } from './constants';

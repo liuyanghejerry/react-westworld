@@ -39,9 +39,9 @@ const LINE_END_STYLE = `
   box-sizing: border-box;
 `;
 const Line = styled.div`
-  height: ${(props) => {
-    return (props.length * (ITEM_SIZE + COMMON_MARGIN)) - (COMMON_MARGIN * 2);
-  }}px;
+  height: ${(props) =>
+     (props.length * (ITEM_SIZE + COMMON_MARGIN)) - (COMMON_MARGIN * 2)
+  }px;
   align-self: flex-start;
   position: absolute;
   right: calc(2ch + ${COMMON_MARGIN / 2}px);
@@ -79,7 +79,7 @@ const LargeLabel = styled.div`
   color: ${colors.mainTextColor};
 `;
 
-function LargeProgressBarItem({filled, label}) {
+function LargeProgressBarItem({ filled, label }) {
   const Item = styled.li`
     display: flex;
     margin: ${COMMON_MARGIN}px 0;
@@ -97,18 +97,19 @@ function LargeProgressBarItem({filled, label}) {
 }
 
 function renderSegments(totalCount, current, minValue) {
-  var items = lodash.range(totalCount);
-  return items.map((item, index) => {
-    return (
-      <LargeProgressBarItem
-        key={index}
-        filled={index < current}
-        label={index + minValue} />
-    );
-  }).reverse();
+  const items = lodash.range(totalCount);
+  return items.map((item, index) =>
+     (
+       <LargeProgressBarItem
+         key={index}
+         filled={index < current}
+         label={index + minValue}
+       />
+    )
+  ).reverse();
 }
 
-function LargeProgressBar({min, max, current, title}) {
+function LargeProgressBar({ min, max, current, title }) {
   return (
     <Layout>
       <Title>{title}</Title>

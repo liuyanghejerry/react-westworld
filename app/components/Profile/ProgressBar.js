@@ -10,14 +10,14 @@ const Bar = styled.span`
   border: 1px solid ${colors.mainTextColorLight};
   background: linear-gradient(
     to right,
-    ${colors.mainTextColor} ${({value}) => value}%,
-    transparent ${({value}) => value}%,
+    ${colors.mainTextColor} ${({ value }) => value}%,
+    transparent ${({ value }) => value}%,
     transparent
   );
   background-repeat: no-repeat;
 `;
 
-function ProgressBar({value}) {
+function ProgressBar({ value }) {
   return (
     <Bar value={value}></Bar>
   );

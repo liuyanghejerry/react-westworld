@@ -104,6 +104,12 @@
       }
     },
     "rules": {
+      "no-mixed-operators": [
+        0,
+        {
+          "allowSamePrecedence": true
+        }
+      ],
       "arrow-parens": [
         "error",
         "always"
@@ -144,6 +150,7 @@
       "prefer-template": 2,
       "class-methods-use-this": 0,
       "react/forbid-prop-types": 0,
+      "react/prop-types": 0,
       "react/jsx-first-prop-new-line": [
         2,
         "multiline"

@@ -4,10 +4,7 @@ import colors from '../../color-scheme';
 import SmallLineChart from './SmallLineChart';
 import Label from './Label';
 
-function LiveStatus({title, data, maxX, maxY}) {
-  const Layout = styled.span`
-    display: inline-block;
-  `;
+function LiveStatus({ title, data, maxX, maxY }) {
   const ColoredLabel = styled(Label)`
     color: ${colors.mainTextColorWhite};
   `;
@@ -17,7 +14,8 @@ function LiveStatus({title, data, maxX, maxY}) {
       <SmallLineChart
         data={data}
         maxX={maxX}
-        maxY={maxY} />
+        maxY={maxY}
+      />
     </span>
   );
 }

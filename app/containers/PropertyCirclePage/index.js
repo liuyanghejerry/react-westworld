@@ -5,11 +5,11 @@
  */
 
 import React from 'react';
-import {random, shuffle} from 'lodash';
+import { random, shuffle } from 'lodash';
 import { connect } from 'react-redux';
 import PropertyCircle from '../../components/PropertyCircle';
 
-import {Personality} from '../../corpus';
+import { Personality } from '../../corpus';
 
 const properties = shuffle(Personality).slice(0, 94).map((personality) => (
   {
@@ -31,7 +31,8 @@ export class PropertyCirclePage extends React.PureComponent { // eslint-disable-
       <div>
         <PropertyCircle
           selectedItem={selectedItem}
-          properties={properties}>
+          properties={properties}
+        >
         </PropertyCircle>
       </div>
     );

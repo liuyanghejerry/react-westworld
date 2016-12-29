@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import colors from '../../color-scheme';
 import Bullet from './Bullet';
 
-function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADIUS, INNEST_CIRCLE_BORDER_WIDTH, CONTAINER_RADIUS}) {
+function propertyCircleFactory({ CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADIUS, INNEST_CIRCLE_BORDER_WIDTH, CONTAINER_RADIUS }) {
   const PropertyItems = styled.div`
     transform: translate(${CIRCLE_RADIUS / 2 + BULLET_RADIUS + MINI_PROGRESS_LENGTH}px, ${CIRCLE_RADIUS / 2 + BULLET_RADIUS + MINI_PROGRESS_LENGTH - (BULLET_RADIUS + 4)}px);
   `;
@@ -12,7 +12,7 @@ function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADI
     display: flex;
     line-height: 10px;
     position: absolute;
-    transform: rotate(${({degree}) => degree}deg) translateX(${CIRCLE_RADIUS / 2}px);
+    transform: rotate(${({ degree }) => degree}deg) translateX(${CIRCLE_RADIUS / 2}px);
     transform-origin: left;
     text-transform: capitalize;
   `;
@@ -42,7 +42,7 @@ function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADI
     position: relative;
   `;
 
-  function PropertyItem({label, percentage, /*checked, */degree}) {
+  function PropertyItem({ label, percentage, /* checked, */degree }) {
     return (
       <PropertyItemLayout degree={degree}>
         <Bullet radius={BULLET_RADIUS}></Bullet>
@@ -54,7 +54,7 @@ function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADI
     );
   }
 
-  function PropertyCircle({properties}) {
+  function PropertyCircle({ properties }) {
     return (
       <PropertyCircleLayout>
         <PropertyItems>
@@ -64,7 +64,8 @@ function propertyCircleFactory({CIRCLE_RADIUS, MINI_PROGRESS_LENGTH, BULLET_RADI
               degree={index / properties.length * 360}
               label={property.label}
               percentage={property.percentage}
-              checked={property.checked} />
+              checked={property.checked}
+            />
           ))}
         </PropertyItems>
         <Circle />

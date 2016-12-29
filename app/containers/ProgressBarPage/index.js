@@ -22,7 +22,7 @@ import {
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 
-import {LargeProgressBar, SmallProgressBar} from '../../components/HorizontalProgressBar';
+import { LargeProgressBar, SmallProgressBar } from '../../components/HorizontalProgressBar';
 
 const Layout = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ const mapStateToProps = createStructuredSelector({
   smallCurrent: selectSmallCurrent(),
 });
 
-function mapDispatchToProps(/*dispatch*/) {
+function mapDispatchToProps(/* dispatch*/) {
   return {};
 }
 

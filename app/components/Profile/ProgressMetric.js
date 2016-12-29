@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ProgressBar from './ProgressBar';
 import Label from './Label';
 
-function ProgressMetric({title, value}) {
+function ProgressMetric({ title, value }) {
   const StyledSpan = styled.span`
     margin-right: 10px;
   `;

@@ -39,9 +39,9 @@ const LINE_END_STYLE = `
   box-sizing: border-box;
 `;
 const Line = styled.div`
-  height: ${(props) => {
-    return (props.length * (ITEM_SIZE + COMMON_MARGIN)) - (COMMON_MARGIN * 2);
-  }}px;
+  height: ${(props) =>
+     (props.length * (ITEM_SIZE + COMMON_MARGIN)) - (COMMON_MARGIN * 2)
+  }px;
   align-self: flex-start;
   position: absolute;
   right: calc(2ch + ${COMMON_MARGIN / 2}px);
@@ -80,7 +80,7 @@ const SmallLabel = styled.div`
   transform: rotate(-90deg);
 `;
 
-function SmallProgressBarItem({filled, label}) {
+function SmallProgressBarItem({ filled, label }) {
   const Item = styled.li`
     display: flex;
     margin: ${COMMON_MARGIN}px 0;
@@ -104,12 +104,13 @@ function renderSegments(totalCount, current, minValue) {
     return (
       <SmallProgressBarItem
         key={index}
-        filled={index < current} label={label} />
+        filled={index < current} label={label}
+      />
     );
   }).reverse();
 }
 
-function SmallProgressBar({min, max, current, title}) {
+function SmallProgressBar({ min, max, current, title }) {
   const List = styled.ul``;
   return (
     <Layout>
