@@ -86,6 +86,14 @@ export default function createRoutes(store) {
           .catch(errorLoading);
       },
     }, {
+      path: '/header',
+      name: 'headerPage',
+      getComponent(location, cb) {
+        System.import('containers/HeaderPage')
+          .then(loadModule(cb))
+          .catch(errorLoading);
+      },
+    }, {
       path: '*',
       name: 'notfound',
       getComponent(nextState, cb) {
